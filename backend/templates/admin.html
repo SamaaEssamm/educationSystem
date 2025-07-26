@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+        }
+        th, td {
+            border: 1px solid gray;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>👤 Welcome, {{ email }}</h2>
+    <h3>📋 Student Complaints</h3>
+
+    {% if complaints %}
+        <table>
+            <tr>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </tr>
+            {% for c in complaints %}
+                <tr>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.subject }}</td>
+                    <td>{{ c.message }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No complaints submitted yet.</p>
+    {% endif %}
+
+    <br><br>
+    <a href="/logout">🚪 Logout</a>
+</body>
+</html>
